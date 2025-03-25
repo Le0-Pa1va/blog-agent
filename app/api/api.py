@@ -1,22 +1,23 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends
 
+from app.api.schemas import AgentRequest
 from app.factories.generator_factory import GeneratorFactory
 from app.factories.model_factory import ModelFactory
 
 agent_router = APIRouter()
 
 @agent_router.get("/")
-async def root():
-    modelo = "gemini"
-    segmento = "tecnologia"
-
+async def generate_post(request: AgentRequest = Depends()):
     try:
-        llm = ModelFactory.create_model(modelo)
-        gerador = GeneratorFactory.create_generator(segmento, llm)
+        llm = ModelFactory.create_model(request.model.value)
+        generator = GeneratorFactory.create_generator(request.segment.value, llm)
+        post = generator.generate_post()
 
-        post = gerador.generate_post()
-
-        return {"Post": post}
+        return {
+            "model": request.model.value,
+            "segment": request.segment.value,
+            "post": post
+        }
 
     except ValueError as e:
         return {"Erro: {e}"}
