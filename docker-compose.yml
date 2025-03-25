@@ -1,14 +1,27 @@
 services:
-  postgres:
-    image: postgres
-    container_name: postgres
+  web:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: blog-agent-web
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
     environment:
-      POSTGRES_PASSWORD: blog
-      POSTGRES_DB: blogdb
+      - PYTHONPATH=/app
+      - DEBUG=True
+    command: uvicorn app.core:app --host 0.0.0.0 --port 8000 --reload
+
+  db:
+    image: postgres:13
+    environment:
+      - POSTGRES_PASSWORD=blog
+      - POSTGRES_DB=blogdb
     ports:
       - "5434:5432"
     volumes:
-      - postgres-data:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql/data
 
 volumes:
-  postgres-data:
+  postgres_data:

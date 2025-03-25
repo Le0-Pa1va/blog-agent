@@ -5,7 +5,7 @@ class BlogAgentAPI:
     def __init__(self):
         self.app = FastAPI()
         self._setup_routes()
-    
+
     def _setup_routes(self):
         self.app.include_router(agent_router)
 
