@@ -1,6 +1,6 @@
 services:
   web:
-    build: 
+    build:
       context: .
       dockerfile: Dockerfile
     container_name: blog-agent-web
@@ -13,15 +13,17 @@ services:
       - DEBUG=True
     command: uvicorn app.core:app --host 0.0.0.0 --port 8000 --reload
 
-  db:
-    image: postgres:13
-    environment:
-      - POSTGRES_PASSWORD=blog
-      - POSTGRES_DB=blogdb
+  mongo:
+    image: mongo:latest
+    container_name: blog-agent-mongo
     ports:
-      - "5434:5432"
+      - "27017:27017"
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - mongo_data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    restart: unless-stopped
 
 volumes:
-  postgres_data:
+  mongo_data:

@@ -4,6 +4,9 @@ run docker-compose file
 
 install fastapi
 pip install "fastapi[standard]"
+openai
+google
+pip install pymongo motor
 
 psql -h localhost --port 5434 -U postgres
 
@@ -17,4 +20,4 @@ docker logs meu-blog-agent
 
 http://127.0.0.1:8000/?segment=travel
 
-http://localhost:8000/?segment=tech&topic=python
+http://localhost:8000/generate?segment=travel&topic=Belo%20horizonte
