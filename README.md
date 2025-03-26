@@ -56,6 +56,9 @@ uvicorn app.main:app --reload
 
 **Exemplo**:
 ```http
+GET /generate
+```
+```http
 GET /generate?model=gemini&segment=tech&topic=IA+Generativa
 ```
 
