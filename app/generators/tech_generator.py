@@ -4,7 +4,7 @@ from app.core.classes.abstract_generator import BlogContentGenerator
 class TechGenerator(BlogContentGenerator):
     def _build_prompt(self) -> str:
         return f"""
-            Gere um post técnico de no mínimo 800 palavras sobre {self.segment} {self.topic} usando FORMATAÇÃO MARKDOWN ESTRITA com a seguinte estrutura:
+            Gere um post técnico de, no mínimo, 800 palavras (sem contar o título) sobre {self.segment} {self.topic} usando FORMATAÇÃO MARKDOWN ESTRITA com a seguinte estrutura:
 
             ```markdown
             # [Título Impactante]

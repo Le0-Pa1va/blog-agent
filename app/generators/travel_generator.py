@@ -3,7 +3,7 @@ from app.core.classes.abstract_generator import BlogContentGenerator
 class TravelGenerator(BlogContentGenerator):
     def _build_prompt(self) -> str:
         return f"""
-            Gere um post detalhado de no mínimo 800 palavras sobre {self.segment} {self.topic} usando FORMATAÇÃO MARKDOWN ESTRITA com a seguinte estrutura:
+            Gere um post detalhado de, no mínimo, 800 palavras sobre {self.segment} {self.topic} usando FORMATAÇÃO MARKDOWN ESTRITA com a seguinte estrutura:
 
             ```markdown
             # [Título Criativo Aqui]
