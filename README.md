@@ -41,7 +41,7 @@ pip install -r requirements.txt
 
 # Configure o MongoDB local/remoto no .env
 
-uvicorn app.main:app --reload
+uvicorn app.core:app --reload
 ```
 
 ## Endpoints da API
