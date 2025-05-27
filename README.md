@@ -4,6 +4,7 @@
 [![FastAPI](https://img.shields.io/badge/Framework-FastAPI-green)](https://fastapi.tiangolo.com/)
 [![MongoDB](https://img.shields.io/badge/Database-MongoDB-brightgreen)](https://www.mongodb.com/)
 [![Docker](https://img.shields.io/badge/Container-Docker-blue)](https://www.docker.com/)
+[![Pydantic](https://img.shields.io/badge/Validation-Pydantic-89CFF0)](https://docs.pydantic.dev/)
 [![OpenAI](https://img.shields.io/badge/API-OpenAI-purple)](https://openai.com/)
 [![Gemini](https://img.shields.io/badge/API-Gemini-orange)](https://deepmind.google/technologies/gemini)
 
@@ -25,6 +26,7 @@
 - **Persistence**: Posts are stored in a **MongoDB** collection for retrieval and future enhancements (e.g., versioning, analytics).
 - **Environment Configuration**: The project supports `.env` configuration with support for toggling features (e.g., trends).
 - **Containerized Deployment**: A `Dockerfile` and `docker-compose.yml` are included for seamless local or production-ready containerization.
+- **Typed Validation**: All request and response models are handled with Pydantic, ensuring data validation and type safety across endpoints.
 
 This structure promotes **separation of concerns**, making it easy to add new models or content segments without modifying core logic. It's ideal for developers who want to expand content automation workflows or integrate with external platforms.
 
