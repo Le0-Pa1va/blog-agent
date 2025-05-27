@@ -6,7 +6,7 @@ class TravelGenerator(BlogContentGenerator):
             Create a detailed post with at least 800 words (not counting the title) about {self.segment} {self.topic} using STRICT MARKDOWN FORMATTING and following this structure:
 
             ```markdown
-            # [Creative Title Here] 🌍✈️
+            # [Creative Title Here]
 
             ## Introduction
             [Engaging introduction in 2–3 sentences]
