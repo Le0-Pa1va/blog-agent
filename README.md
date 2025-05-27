@@ -35,7 +35,7 @@ This structure promotes **separation of concerns**, making it easy to add new mo
 ### Using Docker (Recommended)
 
 ```bash
-git clone https://github.com/your-username/blog-agent.git
+git clone https://github.com/Le0-Pa1va/blog-agent.git
 cd blog-agent
 
 # Set up your API keys
