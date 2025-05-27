@@ -1,37 +1,54 @@
-# Blog Agent - Autônomo de Conteúdo
+# Blog Agent – Autonomous Content Generator
 
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/Framework-FastAPI-green)](https://fastapi.tiangolo.com/)
 [![MongoDB](https://img.shields.io/badge/Database-MongoDB-brightgreen)](https://www.mongodb.com/)
+[![Docker](https://img.shields.io/badge/Container-Docker-blue)](https://www.docker.com/)
+[![OpenAI](https://img.shields.io/badge/API-OpenAI-purple)](https://openai.com/)
+[![Gemini](https://img.shields.io/badge/API-Gemini-orange)](https://deepmind.google/technologies/gemini)
 
-## Descrição
+## Description
 
-Sistema autônomo para geração de conteúdo de blog com:
+**Blog Agent** is an autonomous content generation system designed for creating SEO-friendly blog posts using LLMs like **OpenAI GPT-4** and **Google Gemini**. It follows a modular, scalable architecture with a focus on maintainability and extensibility.
 
-- **IA Generativa**: Integração com GPT-4 e Gemini
-- **Armazenamento**: Persistência em MongoDB
-- **API REST**: Interface via FastAPI
+### 🛠️ Technical Overview
 
-**Funcionalidades Principais**:
+- **Framework**: Built on **FastAPI**, providing high-performance asynchronous APIs and OpenAPI documentation by default.
+- **Modular Architecture**:
+  - `app/core`: Contains the application entry point and abstract base classes for generators and models.
+  - `app/api`: Defines API routes and schemas using Pydantic for data validation.
+  - `app/generators`: Implements content generation logic for specific segments like `tech` and `travel`.
+  - `app/models`: Encapsulates integration with LLMs (`openai_model.py`, `gemini_model.py`) through a clean interface.
+  - `app/factories`: Factory classes (`generator_factory.py`, `model_factory.py`) that resolve the correct components dynamically based on input parameters.
+  - `app/dependencies.py`: Handles dependency injection for MongoDB and other services.
+- **Dependency Management**: All requirements are listed in `requirements.txt` and installed via Docker or virtual environments.
+- **Persistence**: Posts are stored in a **MongoDB** collection for retrieval and future enhancements (e.g., versioning, analytics).
+- **Environment Configuration**: The project supports `.env` configuration with support for toggling features (e.g., trends).
+- **Containerized Deployment**: A `Dockerfile` and `docker-compose.yml` are included for seamless local or production-ready containerization.
 
+This structure promotes **separation of concerns**, making it easy to add new models or content segments without modifying core logic. It's ideal for developers who want to expand content automation workflows or integrate with external platforms.
 
-## Instalação
+---
 
-### Via Docker (Recomendado)
+## 🚀 Installation
+
+### Using Docker (Recommended)
+
 ```bash
-git clone https://github.com/seu-usuario/blog-agent.git
+git clone https://github.com/your-username/blog-agent.git
 cd blog-agent
 
-# Configure as chaves de API
+# Set up your API keys
 cp .env.example .env
-nano .env  # Edite com suas credenciais
+nano .env  # Add your credentials
 
-# Inicie os containers
+# Launch containers
 docker-compose up -d --build
 
-# Acesse: http://localhost:8000/docs
+# Access the docs: http://localhost:8000/docs
+
 ````
-### Execução Local
+### Running Locally
 ```bash
 python3.12 -m venv venv
 source venv/bin/activate  # Linux/Mac
@@ -39,43 +56,43 @@ venv\Scripts\activate     # Windows
 
 pip install -r requirements.txt
 
-# Configure o MongoDB local/remoto no .env
+# Configure MongoDB in the .env file
 
 uvicorn app.core:app --reload
+
 ```
 
-## Endpoints da API
+## API Endpoints
 
-### Geração de posts
+### Generate Blog Post
 **Endpoint**: `/generate`
-**Método**: GET
-**Parâmetros**:
-- `model` (opcional): `gpt` ou `gemini` (padrão: `gemini`)
-- `segment` (opcional): Segmento do conteúdo (pode ser: `tech`, `travel`)
-- `topic` (opcional): Tópico específico para geração
-
+**Method**: GET
+**Parameters**:
+- `model`  (optional): gpt or gemini (default: gemini)
+- `segment`  (optional): Content segment (e.g., tech, travel)
+- `topic` (optional): Specific topic to generate
+Examples
 **Exemplo**:
 ```http
 GET /generate
 ```
 ```http
-GET /generate?model=gemini&segment=tech&topic=IA+Generativa
+GET /generate?model=gemini&segment=tech&topic=Generative+AI
 ```
 
-### Listagem dos posts gerados
+### List Generated Posts
 **Endpoint**: `/list`
-**Método**: GET
+**Method**: GET
 
 
-**Exemplo**:
+**Example**:
 ```http
 GET /list
 ```
 
-## Variáveis de ambiente
+## Environment Variables
 ```bash
-OPENAI_API_KEY=sua_chave_openai
-GEMINI_API_KEY=sua_chave_gemini
+OPENAI_API_KEY=your_openai_key
+GEMINI_API_KEY=your_gemini_key
 MONGO_URI=mongodb://localhost:27017
-TRENDS_ENABLED=false
 ```

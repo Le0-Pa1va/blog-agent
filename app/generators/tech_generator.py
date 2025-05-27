@@ -4,39 +4,39 @@ from app.core.classes.abstract_generator import BlogContentGenerator
 class TechGenerator(BlogContentGenerator):
     def _build_prompt(self) -> str:
         return f"""
-            Gere um post técnico de, no mínimo, 800 palavras (sem contar o título) sobre {self.segment} {self.topic} usando FORMATAÇÃO MARKDOWN ESTRITA com a seguinte estrutura:
+            Generate a technical post with at least 800 words (excluding the title) about {self.segment} {self.topic} using STRICT MARKDOWN FORMATTING with the following structure:
 
             ```markdown
-            # [Título Impactante]
+            # [Impactful Title]
 
-            ## Introdução
-            [Contexto breve sobre a tecnologia em 2-3 frases]
+            ## Introduction
+            [Brief context about the technology in 2–3 sentences]
 
-            ## Vantagens
-            ### 1. [Vantagem Principal]
-            [Explicação técnica com 2-3 parágrafos]
+            ## Advantages
+            ### 1. [Main Advantage]
+            [Technical explanation in 2–3 paragraphs]
 
-            ### 2. [Segunda Vantagem]
-            [Explicação técnica com 2-3 parágrafos]
+            ### 2. [Second Advantage]
+            [Technical explanation in 2–3 paragraphs]
             ```python
-            # Exemplo de código relevante (se aplicável)
+            # Relevant code example (if applicable)
             ```
 
-            ## Desafios
-            ### [Principais Desafio]
-            [Análise técnica com 1-2 parágrafos]
+            ## Challenges
+            ### [Main Challenge]
+            [Technical analysis in 1–2 paragraphs]
 
-            ## Conclusão
-            [Resumo conciso]
-            [CTA perguntando sobre experiências com a tecnologia]
+            ## Conclusion
+            [Concise summary]
+            [CTA asking about experiences with the technology]
             ```
 
-            Requisitos obrigatórios:
-            1. Título como H1 (#)
-            2. Seções de Vantagens/Desafios como H2 (##)
-            3. Subtópicos como H3 (###)
-            4. Incluir pelo menos 1 bloco de código (se aplicável à tecnologia)
-            5. CTA deve ser uma pergunta aberta técnica
-            6. Tom profissional mas acessível
-            7. Mínimo de 800 palavras
+            Mandatory requirements:
+            1. Title must be an H1 (`#`)
+            2. "Advantages" and "Challenges" sections must use H2 (`##`)
+            3. Subtopics must use H3 (`###`)
+            4. Include **at least one code block** (if applicable to the technology)
+            5. CTA must be a **technical open-ended question**
+            6. Professional but accessible tone
+            7. Minimum of **800 words**
         """

@@ -3,39 +3,39 @@ from app.core.classes.abstract_generator import BlogContentGenerator
 class TravelGenerator(BlogContentGenerator):
     def _build_prompt(self) -> str:
         return f"""
-            Gere um post detalhado de, no mínimo, 800 palavras (sem contar o título) sobre {self.segment} {self.topic} usando FORMATAÇÃO MARKDOWN ESTRITA com a seguinte estrutura:
+            Create a detailed post with at least 800 words (not counting the title) about {self.segment} {self.topic} using STRICT MARKDOWN FORMATTING and following this structure:
 
             ```markdown
-            # [Título Criativo Aqui]
+            # [Creative Title Here] 🌍✈️
 
-            ## Introdução
-            [Introdução atraente de 2-3 frases]
+            ## Introduction
+            [Engaging introduction in 2–3 sentences]
 
-            ## [Nome da Seção 1]
-            - Dica prática 1
-            - Dica prática 2
+            ## [Section Name 1]
+            - Practical tip 1
+            - Practical tip 2
 
-            ## [Nome da Seção 2]
-            - Dica prática 3
-            - Dica prática 4
+            ## [Section Name 2]
+            - Practical tip 3
+            - Practical tip 4
 
-            ## [Nome da Seção 3]
-            - Dica prática 5
-            - Dica prática 6
+            ## [Section Name 3]
+            - Practical tip 5
+            - Practical tip 6
 
-            ### Conclusão
-            [Encerramento inspirador]
-            [CTA convidando os leitores a compartilhar experiências]
+            ### Conclusion
+            [Inspirational closing paragraph]
+            [CTA inviting readers to share their own experiences]
             ```
 
-            Requisitos:
-            1. O título deve ser H1 (#)
-            2. As seções devem ser H2 (##)
-            3. Incluir exatamente 3 seções
-            4. Mínimo de 6 dicas práticas no total
-            5. O CTA deve fazer uma pergunta aberta
-            6. Use tom inspirador e linguagem acessível
-            7. Mantenha o foco em {self.segment}
-            8. Pode usar emojis relacionados a viagem no título
-            9. Mínimo de 800 palavras
+            Requirements:
+            1. The title must be an H1 (#)
+            2. All main sections must be H2 (##)
+            3. Include exactly three sections (excluding the introduction and conclusion)
+            4. Include a minimum of six practical tips in total (two per section)
+            5. The CTA must be an open-ended question
+            6. Use an inspirational tone with accessible language
+            7. Keep the focus on {self.segment} throughout
+            8. Feel free to use travel-related emojis in the title
+            9. The post must be at least 800 words long (excluding the title)
         """
