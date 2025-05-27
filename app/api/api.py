@@ -13,26 +13,26 @@ async def generate_post(
     db=Depends(get_db)
 )-> dict:
     """
-        Endpoint para geração automatizada de posts de blog via LLM.
+        Endpoint for automated blog post generation via LLM.
 
-        Descrição:
-            Utiliza modelos de language model (LLM) para criar conteúdo
-            estruturado baseado no segmento especificado.
+        Description:
+            Uses large language models (LLM) to create structured content
+            based on the specified segment.
 
-        Parâmetros:
+        Parameters:
             - **model** (ModelName):
-                - Tipo: Enum string
-                - Modelo de large language model (LLM)
-                - Options: `gpt` (OpenAI) ou `gemini` (Google)
+                - Type: Enum string
+                - Large language model (LLM) to use
+                - Options: `gpt` (OpenAI) or `gemini` (Google)
                 - Default: `gemini`
 
             - **segment** (SegmentName):
-                - Tipo: Enum string
-                - Nicho de conteúdo para o post
-                - Options: `technology` (tecnologia) ou `travel` (viagens)
+                - Type: Enum string
+                - Content niche for the post
+                - Options: `technology` or `travel`
                 - Default: `technology`
 
-        Retorno:
+        Returns:
             {
                 'model': str,
                 'segment': str,
@@ -40,8 +40,8 @@ async def generate_post(
             }
 
         Error Codes:
-            400: Parâmetros inválidos
-            500: Erro na geração do conteúdo
+            400: Invalid parameters
+            500: Content generation error
     """
     try:
         llm = ModelFactory.create_model(request.model.value)

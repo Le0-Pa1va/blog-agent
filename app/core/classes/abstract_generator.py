@@ -10,7 +10,7 @@ class BlogContentGenerator(ABC):
         self.topic = topic
 
     def generate_post(self) -> str:
-        """Método concreto que define o fluxo padrão de geração"""
+        """Concrete method that defines the standard generation workflow"""
         prompt = self._build_prompt()
         raw_content = self.llm_model.generate_content(prompt)
 
@@ -19,17 +19,17 @@ class BlogContentGenerator(ABC):
 
     def _format_content(self, raw_text: str) -> str:
         """
-        Processa conteúdo em markdown e extrai componentes estruturados.
+        Processes markdown content and extracts structured components.
 
-        Extrai:
-        - O título (primeiro heading H1 encontrado)
-        - Mantém o conteúdo markdown completo
+        Extracts:
+        - The title (first H1 heading found)
+        - Keeps the full markdown content
 
         Args:
-            raw_text (str): Texto bruto em formato markdown
+            raw_text (str): Raw text in markdown format
 
         Returns:
-            dict: Dicionário com os componentes processados contendo:
+            dict: Dictionary with the processed components containing:
                 {
                     'title': str,
                     'content': str,
@@ -48,5 +48,5 @@ class BlogContentGenerator(ABC):
 
     @abstractmethod
     def _build_prompt(self) -> str:
-        """Método abstrato: cada subclasse define seu prompt"""
+        """Abstract method: each subclass defines its own prompt"""
         pass
